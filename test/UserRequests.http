@@ -1,0 +1,14 @@
+POST 127.0.0.1:8088/users
+Content-Type: application/json
+
+{"name":"new name", "email": "test18@example.com", "password":"password12345"}
+
+###
+
+GET 127.0.0.1:8088/users/name-lookup?q=test&n=30
+Content-Type: application/json
+###
+
+GET 127.0.0.1:8088/users/name-lookup
+Content-Type: application/json
+###

@@ -1,0 +1,53 @@
+Machine Specification:
+OS Name	Microsoft Windows 10 Home
+Version	10.0.18362 Build 18362
+System Manufacturer	ASUSTeK COMPUTER INC.
+System Model	UX430UA
+System Type	x64-based PC
+Processor	Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz, 2712 Mhz, 2 Core(s), 4 Logical Processor(s)
+Installed Physical Memory (RAM)	8,00 GB
+
+Hyper-V - VM Monitor Mode Extensions	Yes
+Hyper-V - Second Level Address Translation Extensions	Yes
+Hyper-V - Virtualisation Enabled in Firmware	Yes
+Hyper-V - Data Execution Protection	Yes
+
+File System	NTFS
+Size	238,47 GB (256.052.966.400 bytes)
+
+
+
+siergiej@DESKTOP-3DIQLJO:~/dev/wrk$ ./wrk -t17 -c400 -d30s -s write.wrk.lua --latency http://127.0.0.1:8088
+Running 30s test @ http://127.0.0.1:8088
+  17 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.54s    59.30ms   1.67s    66.67%
+    Req/Sec     3.58      4.44    51.00     86.98%
+  Latency Distribution
+     50%    1.54s
+     75%    1.54s
+     90%    1.67s
+     99%    1.67s
+  941 requests in 31.16s, 40.65KB read
+  Socket errors: connect 0, read 0, write 0, timeout 932
+  Non-2xx or 3xx responses: 2
+Requests/sec:     30.20
+Transfer/sec:      1.30KB
+
+
+
+siergiej@DESKTOP-3DIQLJO:~/dev/wrk$ ./wrk -t17 -c400 -d30s -s read.wrk.lua --latency http://127.0.0.1:8088
+Running 30s test @ http://127.0.0.1:8088
+  17 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.63s   245.46ms   2.00s    87.48%
+    Req/Sec    18.29     15.94   131.00     80.42%
+  Latency Distribution
+     50%    1.66s
+     75%    1.74s
+     90%    1.86s
+     99%    1.95s
+  6779 requests in 30.10s, 0.87MB read
+  Socket errors: connect 0, read 0, write 0, timeout 779
+Requests/sec:    225.25
+Transfer/sec:     29.72KB
